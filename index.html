@@ -5,9 +5,9 @@
         <link href="skeleton.css" type="text/css" rel="stylesheet">
         <link href="normalize.css" type="text/css" rel="stylesheet">
         <link href="style.css" type="text/css" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
                 crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
                 crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <title>Yelp Restaurant Selector</title>
@@ -24,7 +24,7 @@
             <li>Radius to search (max 25 miles, default 10 miles)</li>
             <li>Restaurants that are currently open (unchecked means all restaurants)</li>
         </ul>
-        <!-- localhost: http://127.0.0.1:8080/api/v1/recommendations -->
+        <!-- localhost: http://127.0.0.1:8080/api/v1/recommendations Heroku: https://benjamin-catarevas-yelp.herokuapp.com/-->
         <form id="form" action="https://benjamin-catarevas-yelp.herokuapp.com/" method="post">
             <label for="food">Type of food:</label>
             <input type="text" class="input" name="food" id="food" />
@@ -78,7 +78,8 @@
         </table>
         <div id="map"></div>
         <div id="results"> </div>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhqqaY6PPPWj3kekGVyHVkNLvHrdkzp6c&callback=initMap">
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhqqaY6PPPWj3kekGVyHVkNLvHrdkzp6c&callback=initMap">
         </script>
         <script src="main.js"></script>
         <!-- If a script depends on another script, the one that is being relied upon should be before the one that relies on it -->
