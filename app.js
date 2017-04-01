@@ -30,7 +30,6 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
     console.error(err);
 });
 
-Listen on localhost
 app.listen(process.env.PORT || "3000", function () {
     console.log('Example app listening on port 8080!')
 })
