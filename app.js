@@ -31,16 +31,19 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
 });
 
 //Listen on localhost
-//app.listen(process.env.PORT || "3000", function () {
-//    console.log('Example app listening on port 8080!')
-//})
+app.listen(process.env.PORT || "3000", function () {
+    console.log('Example app listening on port 8080!')
+})
 
+//Localhost
 //app.listen(8080, function() {
 //    console.log("Listening!");
 //})
 
+
+//localhost: /api/v1/recommendations
 //we need to latch onto that with a then statement to evaluate it
-app.post("/api/v1/recommendations", function(req, res, next) {
+app.post("https://benjamin-catarevas-yelp.herokuapp.com", function(req, res, next) {
     console.log(req.body)
     var food, limit, location, radius, open; //define variables to contain post request parameters
     var food = req.body.food;
@@ -51,21 +54,21 @@ app.post("/api/v1/recommendations", function(req, res, next) {
     } else { //meaning the user entered a valid number 
         limit = req.body.limit //set the limit to whatever the user entered, because it's a valid number
     }
-    
+
     location = req.body.location
-    
+
     if (req.body.radius >= 25) { //if the radius is greater than 25 miles
         radius = 40000; //set to max radius of 40000 meters
     } else {
         radius = req.body.radius * 1609.344 //convert miles to meters
     }
-    
+
     if (req.body.open) { //boolean whether to return currently open restaurants (true = only open restaurants, false = all)
         open = true;
     } else {
         open = false;
     }
-    
+
     client.search({
         term: food, //food type
         limit: limit, //how many results
