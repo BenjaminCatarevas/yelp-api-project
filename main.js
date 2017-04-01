@@ -35,23 +35,15 @@ if (navigator.geolocation) { //add geolocation
                         addMarker(latLng)
                         //two functions, one for header that abstracts the h3 header with the resposne name
                         //another for the body that takes a bunch of parameters and returns the body as a string
-                        $("#accordion").append("<h3 id='result'>" + 
-                                               resp[i].name + 
-                                               "</h3>" + 
-                                               "\n" + 
-                                               "<div><p>" + 
-                                               "Location: " + 
-                                               resp[i].location.address1 + ", " + resp[i].location.city + ", " + 
-                                               resp[i].location.country + resp[i].location.display_address[0] + ", " + resp[i].location.display_address[1] + ", " + 
-                                               resp[i].location.country + 
-                                               //address, city, state, zip, country
+                        $("#accordion").append(accordionName(resp[i]) + "\n" + 
+                                               "<div><p>Location: " + 
+                                               accordionLocation(resp[i]) + 
                                                "<br>" + 
-                                               "Phone number: " + 
-                                               resp[i].display_phone + 
+                                               "Phone number: " + accordionPhone(resp[i]) + 
                                                "<br>" + 
-                                               "Price: " + resp[i].price + 
+                                               "Price: " + accordionPrice(resp[i]) + 
                                                "<br>" + 
-                                               "Rating: " + resp[i].rating + 
+                                               "Rating: " + accordionRating(resp[i]) + 
                                                "</p></div>")
                     }
                 }
@@ -71,6 +63,34 @@ if (navigator.geolocation) { //add geolocation
     })
 } else { //Replace with basic POST request with non-geolocation functionality
     alert("Geolocation is not supported on this browser")
+}
+
+function accordionName(response_body) { //Function to return the header for the accordion
+    var name = response_body.name;
+    return "<h3 id='result'>" + name + "</h3>";
+}
+
+function accordionLocation(response_body) {
+    var address = response_body.location.address1;
+    var stateZip = response_body.location.display_address[1];
+    var country = response_body.location.country;
+    var rating = response_body.rating;
+    return address + ", " + stateZip + ", " + country;
+}
+
+function accordionPhone(response_body) {
+    var phone = response_body.display_phone;
+    return phone;
+}
+
+function accordionPrice(response_body) {
+    var price = response_body.price;
+    return price;
+}
+
+function accordionRating(response_body) {
+    var rating = response_body.rating;
+    return rating;
 }
 
 function addMarker(location) {
