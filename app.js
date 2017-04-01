@@ -25,7 +25,6 @@ app.use(cors()) //to avoid any server header errors
 //Create a var called client to capture the yelp client created by passing the credentials it to the yelp instance
 var client
 const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
-    console.log(response.jsonBody.access_token);
     client = yelp.client(response.jsonBody.access_token);
 }).catch(err => {
     console.error(err);
