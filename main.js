@@ -22,6 +22,7 @@ if (navigator.geolocation) { //add geolocation
             url: actionurl,
             type: 'post',
             data: $("#form").serialize(),
+            dataType: "jsonp",
             success: function (resp) {
                 console.log(resp);
                 $('#results').append('<div id="accordion"></div>');
