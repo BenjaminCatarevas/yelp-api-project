@@ -35,9 +35,9 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
 //    console.log('Example app listening on port 8080!')
 //})
 
-app.listen(8080, function() {
-    console.log("Listening!");
-})
+//app.listen(8080, function() {
+//    console.log("Listening!");
+//})
 
 //we need to latch onto that with a then statement to evaluate it
 app.post("/api/v1/recommendations", function(req, res, next) {
