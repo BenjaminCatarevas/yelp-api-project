@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+        <link href="skeleton.css" type="text/css" rel="stylesheet">
+        <link href="normalize.css" type="text/css" rel="stylesheet">
+        <link href="style.css" type="text/css" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <title>Yelp Restaurant Selector</title>
+    </head>
+
+    <body>
+        <h1>Yelp Restaurant Selector</h1>
+        <p>This is a program that gives users a chance to choose restaurants based on certain preferences.</p>
+        <h3>The following choices available:</h3>
+        <ul class="parameters">
+            <li>Food type (Mexican, Chinese, etc.)</li>
+            <li>Number of results (max 50, default 10)</li>
+            <li>Location (town, state) - Required</li>
+            <li>Radius to search (max 25 miles, default 10 miles)</li>
+            <li>Restaurants that are currently open (unchecked means all restaurants)</li>
+        </ul>
+        <form id="form" action="http://127.0.0.1:8080/api/v1/recommendations" method="post">
+            <label for="food">Type of food:</label>
+            <input type="text" class="input" name="food" id="food" />
+            <br>
+            <label for="limit">Limit:</label>
+            <input type="text" class="input" name="limit" id="limit" />
+            <br>
+            <label for="location">Location:</label>
+            <input type="text" class="input" name="location" id="location" />
+            <br>
+            <label for="radius">Radius:</label>
+            <input type="text" class="radius" name="radius" id="radius" />
+            <br>
+            <label for="open">Currently open?:
+                <input type="checkbox" class="open" name="open" id="open" />
+                <span class="label-body"></span></label>
+            <label for="current_location">Use current location?:
+                <input type="checkbox" class="current_location" name="current_location" id="current_location" />
+                <span class="label-body"></span></label>
+            <script>
+                /* Grays out current location checkbox if geolocation is not supported */
+                if (!navigator.geolocation) {
+                    document.getElementById("current_location").disabled=true;
+                } else {
+                    document.getElementById("current_location").disabled=false;
+                }
+            </script>
+            <input type="submit" class="button-primary" id="submit" value="Find!">
+        </form>
+        <table style="width:100%">
+            <tr>
+                <th>Price Range Symbol</th>
+                <th>Dollar Equivalent</th> 
+            </tr>
+            <tr>
+                <td>$</td>
+                <td>&lt $10</td>
+            </tr>
+            <tr>
+                <td>$$</td>
+                <td>$11-$30</td>
+            </tr>
+            <tr>
+                <td>$$$</td>
+                <td>$31-$60</td>
+            </tr>
+            <tr>
+                <td>$$$$</td>
+                <td>&gt $61</td>
+            </tr>
+        </table>
+        <div id="map"></div>
+        <div id="results"> </div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhqqaY6PPPWj3kekGVyHVkNLvHrdkzp6c&callback=initMap">
+        </script>
+        <script src="main.js"></script>
+        <!-- If a script depends on another script, the one that is being relied upon should be before the one that relies on it -->
+    </body>
+</html>
