@@ -1,0 +1,25 @@
+{
+  "name": "capital-one-coding-challenge",
+  "version": "1.0.0",
+  "description": "Capital One Coding Challenge for Software Engineering Summit",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjaminCatarevas/Capital-One-Coding-Challenge.git"
+  },
+  "author": "Benjamin Catarevas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenjaminCatarevas/Capital-One-Coding-Challenge/issues"
+  },
+  "homepage": "https://github.com/BenjaminCatarevas/Capital-One-Coding-Challenge#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.1",
+    "express": "^4.15.2",
+    "yelp-fusion": "^1.0.3"
+  }
+}
