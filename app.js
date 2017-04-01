@@ -31,19 +31,20 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
 });
 
 //Listen on localhost
-app.listen(process.env.PORT || "3000", function () {
-    console.log('Example app listening on port 8080!')
-})
+//app.listen(process.env.PORT || "3000", function () {
+//    console.log('Example app listening on port 8080!')
+//})
 
 //Localhost
-//app.listen(8080, function() {
-//    console.log("Listening!");
-//})
+app.listen(8080, function() {
+    console.log("Listening!");
+})
 
 
 //localhost: /api/v1/recommendations
+//Heroku: https://benjamin-catarevas-yelp.herokuapp.com
 //we need to latch onto that with a then statement to evaluate it
-app.post("https://benjamin-catarevas-yelp.herokuapp.com", function(req, res, next) {
+app.post("/api/v1/recommendations", function(req, res, next) {
     console.log(req.body)
     var food, limit, location, radius, open; //define variables to contain post request parameters
     var food = req.body.food;
