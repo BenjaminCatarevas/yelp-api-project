@@ -1,0 +1,22 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    background: #fae4e3;
+    color: #444;
+    margin: 40px auto;
+    max-width: 650px;
+    line-height: 1.6;
+    font-size: 18px;
+    padding: 0 10px
+}
+
+h1,h2,h3 {
+    line-height: .1
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.button {
+    border-radius: 100px;
+}
