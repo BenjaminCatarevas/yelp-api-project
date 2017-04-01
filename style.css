@@ -20,3 +20,8 @@ table, th, td {
 .button {
     border-radius: 100px;
 }
+
+#map {
+    height: 500px;
+    border: 1px solid black;
+}
