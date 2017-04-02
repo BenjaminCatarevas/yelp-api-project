@@ -1,6 +1,6 @@
 # Yelp API Project
 
-This project uses Yelp's Fusion API to recommend users restaurants and any other locations based on preferences. These preferences include:
+This project uses Yelp's Fusion API to recommend users restaurants and any other type of store based on preferences. These preferences include:
 * Type of restaurant/store
 * How many results
 * Location
