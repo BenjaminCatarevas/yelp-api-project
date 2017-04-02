@@ -18,7 +18,7 @@
         <p>This is a program that gives users a chance to choose restaurants based on certain preferences.</p>
         <h3>The following choices available:</h3>
         <ul class="parameters">
-            <li>Food type (Mexican, Chinese, etc.)</li>
+            <li>Store type (Mexican, Chinese, thrift shop, etc.)</li>
             <li>Number of results (max 50, default 10)</li>
             <li>Location (town, state) - Required</li>
             <li>Radius to search (max 25 miles, default 10 miles)</li>
@@ -26,8 +26,8 @@
         </ul>
         <!-- localhost: http://127.0.0.1:8080/api/v1/recommendations Heroku: https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations-->
         <form id="form" action="https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations" method="post">
-            <label for="food">Type of food:</label>
-            <input type="text" class="input" name="food" id="food" />
+            <label for="store">Type of store:</label>
+            <input type="text" class="input" name="store" id="store" />
             <br>
             <label for="limit">Limit:</label>
             <input type="text" class="input" name="limit" id="limit" />
