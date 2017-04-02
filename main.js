@@ -2,12 +2,12 @@ var map;
 var geocoder;
 var markers = [];
 
-$(document).ready(function() {
+$(document).ready(=> {
     initializeGeocoder(); // Initializes Geocoder
 })
 
 if (navigator.geolocation) { //add geolocation
-    $("#form").submit(function (e) { //target the form
+    $("#form").submit((e) => { //target the form
 
         deleteMarkers(); // Clears array and map of markers
         codeAddress(); // Grab location of user
@@ -17,7 +17,7 @@ if (navigator.geolocation) { //add geolocation
             url: e.currentTarget.action,
             type: 'post',
             data: $("#form").serialize(),
-            success: function (resp) {
+            success: (resp) => {
                 $("#results").append('<div id="accordion"></div>');
                 // The above line adds a div container to hold the results in accordion form
                 if (resp.length === 0) { // Alerts user if no results are found
@@ -43,7 +43,7 @@ if (navigator.geolocation) { //add geolocation
                 //Add each result into the accordion div container so the user can see each result
                 $("#accordion").accordion({collapsible: true, active: false});
             },
-            error: function (err) {
+            error: (err) => {
                 console.error(err)
                 alert ("Error: Unspecified value")
             }
