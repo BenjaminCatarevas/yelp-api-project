@@ -11,10 +11,12 @@ if (navigator.geolocation) { //add geolocation
 
         deleteMarkers(); // Clears array and map of markers
         codeAddress(); // Grab location of user
+        
+        var actionurl = e.currentTarget.action;
 
         $("#results").empty(); // Reset the results div to hold the new results
         $.ajax({ // Use AJAX for the post request
-            url: e.currentTarget.action,
+            url: actionurl,
             type: 'post',
             data: $("#form").serialize(),
             success: function (resp) {
