@@ -47,22 +47,25 @@ app.post("/api/v1/recommendations", function(req, res, next) {
     var food, limit, location, radius, open; //define variables to contain post request parameters
     var food = req.body.food; // If it's an empty food term, it'll just return 0 results
     
+    if (req.body.limit%1 != 0) { // If the user does not enter a decimal
+        limit = 10; // Set the default to 10
+    } 
     if (req.body.limit > 50) { //if the limit entered by the user is greater than 50
         limit = 50 //bound the limit to 50
     } else if (isNaN(req.body.limit)) {  //if the limit isn't a number
-        limit = 10 //default the limit to 10
-    } else { //meaning the user entered a valid number 
-        limit = req.body.limit //set the limit to whatever the user entered, because it's a valid number
+        limit = 10 // Default the limit to 10
+    } else { // Meaning the user entered a valid number 
+        limit = req.body.limit // Set the limit to whatever the user entered, because it's a valid number
     }
 
     location = req.body.location // If the user doesn't give a location, it'll return 0 results
 
-    if (req.body.radius >= 25) { //if the radius is greater than 25 miles
-        radius = 40000; //set to max radius of 40000 meters
+    if (req.body.radius >= 25) { // If the radius is greater than 25 miles
+        radius = 40000; // Set to max radius of 40000 meters
     } else if (isNaN(req.body.radius)) {
-        radius = 16090; //round to 10 miles, default
+        radius = 16090; // Round to 10 miles, default
     } else {
-        radius = Math.ceil(req.body.radius * 1609.344) //convert miles to meters and rounds up
+        radius = Math.ceil(req.body.radius * 1609.344); // Convert miles to meters and rounds up
     }
 
     if (req.body.open) { //boolean whether to return currently open restaurants (true = only open restaurants, false = all)
@@ -72,11 +75,11 @@ app.post("/api/v1/recommendations", function(req, res, next) {
     }
 
     client.search({
-        term: food, //food type
-        limit: limit, //how many results
-        location: location, //where
+        term: food, // Food type
+        limit: limit, // How many results
+        location: location, // Where
         radius: radius,
-        open_now: open //all restaurants or currently open restaurants
+        open_now: open // All restaurants or currently open restaurants
     }).then(response => {
         res.status(200).json(response.jsonBody.businesses);
         // The above line sends a status code 200 to the client, and within that sends the JS object returned by the Yelp client in json format (a string) to the client as well
