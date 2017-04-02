@@ -62,7 +62,7 @@ app.post("/api/v1/recommendations", function(req, res, next) {
     } else if (isNaN(req.body.radius)) {
         radius = 16090; //round to 10 miles, default
     } else {
-        radius = req.body.radius * 1609 //convert miles to meters and rounds up
+        radius = Math.ceil(req.body.radius * 1609.344) //convert miles to meters and rounds up
     }
 
     if (req.body.open) { //boolean whether to return currently open restaurants (true = only open restaurants, false = all)
