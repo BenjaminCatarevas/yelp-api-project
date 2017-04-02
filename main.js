@@ -62,46 +62,6 @@ if (navigator.geolocation) { //add geolocation
 // Else statement for non-geolocation browsers
 } else {
     alert("Geolocation is not supported on this browser") // Inform user geolocation is not enabled/supported
-    $("#form").submit(function (e) { // Target the form
-        
-        // Get the action-url of the form
-        var actionurl = e.currentTarget.action;
-
-        $("#results").empty(); // Reset the results div to hold the new results of the API lookup
-        $.ajax({ // Use AJAX for the post request
-            url: actionurl,
-            type: 'post',
-            data: $("#form").serialize(),
-            success: function (resp) {
-                //Append the results to the div labeled accordion
-                $('#results').append('<div id="accordion"></div>');
-                if (resp.length == 0) { // Alerts user if no results are found
-                    alert("No results found.");
-                } else {
-                    for (var i = 0; i < resp.length; i++) { // Iterate through each restaurant and append the information
-                        $("#accordion").append(accordionName(resp[i]) + "\n" + 
-                                               "<div><p>Location: " + 
-                                               accordionLocation(resp[i]) + 
-                                               "<br>" + 
-                                               "Phone number: " + accordionPhone(resp[i]) + 
-                                               "<br>" + 
-                                               "Price: " + accordionPrice(resp[i]) + 
-                                               "<br>" + 
-                                               "Rating: " + accordionRating(resp[i]) + 
-                                               "</p></div>")
-                    }
-                }
-                //Add each result into the accordion div container so the user can see each result
-                $("#accordion").accordion({collapsible: true, active: false});
-            },
-            error: function (err) {
-                console.error(err)
-                alert ("Error: Unspecified value")
-            }
-        })
-        // Prevent default functionality
-        e.preventDefault();
-    })
 }
 
 /* Start of accordion functions */
