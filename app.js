@@ -31,14 +31,14 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
 });
 
 // Listen on Heroku's port
-//app.listen(process.env.PORT || "3000", function () {
-//    console.log('Successfully listening on Port 3000!')
-//})
+app.listen(process.env.PORT || "3000", function () {
+    console.log('Successfully listening on Port 3000!')
+})
 
 //Localhost
-app.listen(8080, function() {
-    console.log("Successfully listening on port 8080!");
-})
+//app.listen(8080, function() {
+//    console.log("Successfully listening on port 8080!");
+//})
 
 
 // We need to latch onto that with a then statement to evaluate it
