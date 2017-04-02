@@ -21,3 +21,5 @@ Geolocation does not need to be enabled to use.
 * [Yelp Fusion API](https://www.yelp.com/developers)
 * [Google Maps API](https://developers.google.com/maps/)
 * [jQuery](https://jqueryui.com)
+* [Heroku](https://dashboard.heroku.com/apps)
+* [GitHub Pages](https://pages.github.com)
