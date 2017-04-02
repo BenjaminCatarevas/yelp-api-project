@@ -10,7 +10,7 @@ It also includes Google Maps to show where the stores are in relation to your cu
 
 ## Usage
 
-Visit: https://benjamincatarevas.githubpages.io/yelp-api-project to use this app.
+Visit: https://benjamincatarevas.github.io/yelp-api-project/ to use this app.
 Geolocation does not need to be enabled to use.
 
 ## Built With
