@@ -42,8 +42,8 @@ app.listen(port, function () {
 
 // We need to latch onto that with a then statement to evaluate it
 app.post("/api/v1/recommendations", function(req, res, next) {
-    var food, limit, location, radius, open; //define variables to contain post request parameters
-    var food = req.body.food; // If it's an empty food term, it'll just return 0 results
+    var store, limit, location, radius, open; //define variables to contain post request parameters
+    var store = req.body.store; // If it's an empty store term, it'll just return 0 results
 
     if (req.body.limit%1 != 0) { // If the user does not enter a decimal
         limit = 10; // Set the default to 10
@@ -67,7 +67,7 @@ app.post("/api/v1/recommendations", function(req, res, next) {
     }
 
     client.search({
-        term: food, // Food type
+        term: store, // Store type
         limit: limit, // How many results
         location: location, // Where
         radius: radius,
