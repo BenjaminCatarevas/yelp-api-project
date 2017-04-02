@@ -1,8 +1,12 @@
 // App ID
-const CLIENT_ID = process.env.client_id
+const CLIENT_ID = process.env.CLIENT_ID
 
 // App Secret
-const CLIENT_SECRET = process.env.client_secret
+const CLIENT_SECRET = process.env.CLIENT_SECRET
+
+if (CLIENT_ID === 'undefined' || CLIENT_SECRET === 'undefined') {
+    console.log("Error: Undefined environment variables.");
+}
 
 // Import Yelp API Wrapper
 const yelp = require('yelp-fusion')
@@ -31,22 +35,16 @@ const token = yelp.accessToken(CLIENT_ID, CLIENT_SECRET).then(response => {
 });
 
 // Listen on Heroku's port
-app.listen(process.env.PORT || "3000", function () {
-    console.log('Successfully listening on Port 3000!')
+var port = process.env.PORT || '3000';
+app.listen(port, function () {
+    console.log('Successfully listening on port: ' + port);
 })
-
-//Localhost
-//app.listen(8080, function() {
-//    console.log("Successfully listening on port 8080!");
-//})
-
 
 // We need to latch onto that with a then statement to evaluate it
 app.post("/api/v1/recommendations", function(req, res, next) {
-    console.log(req.body)
     var food, limit, location, radius, open; //define variables to contain post request parameters
     var food = req.body.food; // If it's an empty food term, it'll just return 0 results
-    
+
     if (req.body.limit%1 != 0) { // If the user does not enter a decimal
         limit = 10; // Set the default to 10
     } 
@@ -68,18 +66,12 @@ app.post("/api/v1/recommendations", function(req, res, next) {
         radius = Math.ceil(req.body.radius * 1609.344); // Convert miles to meters and rounds up
     }
 
-    if (req.body.open) { //boolean whether to return currently open restaurants (true = only open restaurants, false = all)
-        open = true;
-    } else {
-        open = false;
-    }
-
     client.search({
         term: food, // Food type
         limit: limit, // How many results
         location: location, // Where
         radius: radius,
-        open_now: open // All restaurants or currently open restaurants
+        open_now: req.body.open // All restaurants or currently open restaurants
     }).then(response => {
         res.status(200).json(response.jsonBody.businesses);
         // The above line sends a status code 200 to the client, and within that sends the JS object returned by the Yelp client in json format (a string) to the client as well
