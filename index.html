@@ -19,8 +19,7 @@
             <li>Radius to search (max 25 miles, default 10 miles)</li>
             <li>Restaurants that are currently open (unchecked means all restaurants)</li>
         </ul>
-        <!-- localhost: http://127.0.0.1:8080/api/v1/recommendations Heroku: https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations-->
-        <form id="form" action="https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations" method="post">
+        <form id="form" action="https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations">
             <label for="store">Type of store:</label>
             <input type="text" class="input" name="store" id="store" />
             <br>
@@ -45,7 +44,7 @@
             </tr>
             <tr>
                 <td>$</td>
-                <td>&lt $10</td>
+                <td>&lt;$10</td>
             </tr>
             <tr>
                 <td>$$</td>
@@ -57,11 +56,11 @@
             </tr>
             <tr>
                 <td>$$$$</td>
-                <td>&gt $61</td>
+                <td>&gt;$61</td>
             </tr>
         </table>
         <div id="map"></div>
-        <div id="results"> </div>
+        <div id="results"></div>
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhqqaY6PPPWj3kekGVyHVkNLvHrdkzp6c&callback=initMap">
         </script>
