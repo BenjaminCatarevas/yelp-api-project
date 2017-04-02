@@ -29,7 +29,7 @@ if (navigator.geolocation) { //add geolocation
                         var data = resp[i]; // Assign response to data variable for readability
                         var latLng = new google.maps.LatLng(data.coordinates.latitude, data.coordinates.longitude); // Latitude and longitude coords
                         addMarker(latLng, resp[i])
-                        $("#accordion").append(accordionName(resp[i]) + 
+                        $("#accordion").append(accordionName(resp[i]) + "\n" + 
                                                "<div><p>Location: " + 
                                                accordionLocation(resp[i]) + 
                                                "<br>" + 
