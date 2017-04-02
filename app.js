@@ -1,10 +1,10 @@
 // App ID
-const CLIENT_ID = 'LwyO2ipJjCw8Sro-cH6uAg'
+const CLIENT_ID = process.env.client_id
 
 // App Secret
-const CLIENT_SECRET = '5Z2wbtMFIBby6YuuJ1rZtQTz5Bd0qDPR67fN6f0qeZ1CDGbuSp6DRKA5AD4oS8e9'
+const CLIENT_SECRET = process.env.client_secret
 
-// Import Yelp API Wrapper and make an instance of it
+// Import Yelp API Wrapper
 const yelp = require('yelp-fusion')
 
 // Import Express and Body-Parser for interfacing front-end with back-end
