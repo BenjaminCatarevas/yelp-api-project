@@ -71,7 +71,7 @@ app.post("/api/v1/recommendations", function(req, res, next) {
         limit: limit, // How many results
         location: location, // Where
         radius: radius,
-        open_now: req.body.open // All restaurants or currently open restaurants
+        open_now: req.body.open ? true : false; // All restaurants or currently open restaurants, uses ternary for boolean
     }).then(response => {
         res.status(200).json(response.jsonBody.businesses);
         // The above line sends a status code 200 to the client, and within that sends the JS object returned by the Yelp client in json format (a string) to the client as well
