@@ -42,7 +42,7 @@ app.listen(process.env.PORT || "3000", function () {
 
 
 // We need to latch onto that with a then statement to evaluate it
-app.post("/api/v1/recommendations", function(req, res, next) {
+app.post("api/v1/recommendations", function(req, res, next) {
     console.log(req.body)
     var food, limit, location, radius, open; //define variables to contain post request parameters
     var food = req.body.food; // If it's an empty food term, it'll just return 0 results
