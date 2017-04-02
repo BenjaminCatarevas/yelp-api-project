@@ -21,7 +21,7 @@ if (navigator.geolocation) { //add geolocation
                 $("#results").append('<div id="accordion"></div>');
                 // The above line adds a div container to hold the results in accordion form
                 if (resp.length === 0) { // Alerts user if no results are found
-                    $("#results").append("<p>Number of results: 0 </p>");
+                    $("#button").append("<p>Number of results: 0 </p>");
                 } else {
                     $("#results").append("<p>Number of results: " + resp.length +  "</p>");
                     for (var i = 0; i < resp.length; i++) { // Iterate through 
