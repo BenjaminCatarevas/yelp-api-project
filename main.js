@@ -11,20 +11,19 @@ if (navigator.geolocation) { //add geolocation
 
         deleteMarkers(); // Clears array and map of markers
         codeAddress(); // Grab location of user
-        
-        var actionurl = e.currentTarget.action;
 
         $("#results").empty(); // Reset the results div to hold the new results
         $.ajax({ // Use AJAX for the post request
-            url: actionurl,
+            url: e.currentTarget.action,
             type: 'post',
             data: $("#form").serialize(),
             success: function (resp) {
                 $("#results").append('<div id="accordion"></div>');
                 // The above line adds a div container to hold the results in accordion form
                 if (resp.length === 0) { // Alerts user if no results are found
-                    //$('#results').append("<p>Number of results: 0 </p>");
+                    $("#results").append("<p>Number of results: 0 </p>");
                 } else {
+                    $("#results").append("<p>Number of results: " + resp.length +  "</p>");
                     for (var i = 0; i < resp.length; i++) { // Iterate through 
                         var data = resp[i]; // Assign response to data variable for readability
                         var latLng = new google.maps.LatLng(data.coordinates.latitude, data.coordinates.longitude); // Latitude and longitude coords
@@ -43,7 +42,6 @@ if (navigator.geolocation) { //add geolocation
                 }
                 //Add each result into the accordion div container so the user can see each result
                 $("#accordion").accordion({collapsible: true, active: false});
-                //$("#results").append("<p>Number of results: " + resp.length +  "</p>");
             },
             error: function (err) {
                 console.error(err)
@@ -54,8 +52,8 @@ if (navigator.geolocation) { //add geolocation
         // Prevent default functionality
         e.preventDefault();
     })
-    
-// Else statement for non-geolocation browsers
+
+    // Else statement for non-geolocation browsers
 } else {
     alert("Geolocation is not supported on this browser") // Inform user geolocation is not enabled/supported
 }
