@@ -61,6 +61,7 @@ app.post("/api/v1/recommendations", function(req, res, next) {
         radius = 40000; //set to max radius of 40000 meters
     } else {
         radius = Math.ceil(req.body.radius * 1609.344) //convert miles to meters and rounds up
+        console.log(radius)
     }
 
     if (req.body.open) { //boolean whether to return currently open restaurants (true = only open restaurants, false = all)
