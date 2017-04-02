@@ -1,11 +1,8 @@
-/*
-This is to submit a post request to the API through the form
-*/
 var map;
 var geocoder;
 var markers = [];
 
-$(document).ready(function() { //when the document is fully loaded, initialize the geocoder variable
+$(document).ready(function() {
     initializeGeocoder(); // Initializes Geocoder
 })
 
@@ -15,25 +12,22 @@ if (navigator.geolocation) { //add geolocation
         deleteMarkers(); // Clears array and map of markers
         codeAddress(); // Grab location of user
 
-        // Get the action-url of the form
-        var actionurl = e.currentTarget.action;
-
         $("#results").empty(); // Reset the results div to hold the new results
         $.ajax({ // Use AJAX for the post request
-            url: actionurl,
+            url: e.currentTarget.action,
             type: 'post',
             data: $("#form").serialize(),
             success: function (resp) {
-                $('#results').append('<div id="accordion"></div>');
+                $("#results").append('<div id="accordion"></div>');
                 // The above line adds a div container to hold the results in accordion form
-                if (resp.length == 0) { // Alerts user if no results are found
-                    alert("No results found.");
+                if (resp.length === 0) { // Alerts user if no results are found
+                    $('#results').append("<p>Number of results: 0 </p>");
                 } else {
                     for (var i = 0; i < resp.length; i++) { // Iterate through 
-                        var data = resp[i]; //assign response to data var for legitiblity
-                        var latLng = new google.maps.LatLng(data.coordinates.latitude, data.coordinates.longitude); //lat and long coords
+                        var data = resp[i]; // Assign response to data variable for readability
+                        var latLng = new google.maps.LatLng(data.coordinates.latitude, data.coordinates.longitude); // Latitude and longitude coords
                         addMarker(latLng, resp[i])
-                        $("#accordion").append(accordionName(resp[i]) + "\n" + 
+                        $("#accordion").append(accordionName(resp[i]) + 
                                                "<div><p>Location: " + 
                                                accordionLocation(resp[i]) + 
                                                "<br>" + 
@@ -45,9 +39,9 @@ if (navigator.geolocation) { //add geolocation
                                                "</p></div>")
                     }
                 }
-
                 //Add each result into the accordion div container so the user can see each result
                 $("#accordion").accordion({collapsible: true, active: false});
+                $("#results").append("<p>Number of results: " + resp.length +  "</p>");
             },
             error: function (err) {
                 console.error(err)
