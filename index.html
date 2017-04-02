@@ -24,7 +24,7 @@
             <li>Radius to search (max 25 miles, default 10 miles)</li>
             <li>Restaurants that are currently open (unchecked means all restaurants)</li>
         </ul>
-        <!-- localhost: http://127.0.0.1:8080/api/v1/recommendations Heroku: https://benjamin-catarevas-yelp.herokuapp.com//api/v1/recommendations-->
+        <!-- localhost: http://127.0.0.1:8080/api/v1/recommendations Heroku: https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations-->
         <form id="form" action="https://benjamin-catarevas-yelp.herokuapp.com/api/v1/recommendations" method="post">
             <label for="food">Type of food:</label>
             <input type="text" class="input" name="food" id="food" />
@@ -41,17 +41,6 @@
             <label for="open">Currently open?:
                 <input type="checkbox" class="open" name="open" id="open" />
                 <span class="label-body"></span></label>
-            <label for="current_location">Use current location?:
-                <input type="checkbox" class="current_location" name="current_location" id="current_location" />
-                <span class="label-body"></span></label>
-            <script>
-                /* Grays out current location checkbox if geolocation is not supported */
-                if (!navigator.geolocation) {
-                    document.getElementById("current_location").disabled=true;
-                } else {
-                    document.getElementById("current_location").disabled=false;
-                }
-            </script>
             <input type="submit" class="button-primary" id="submit" value="Find!">
         </form>
         <table style="width:100%">
