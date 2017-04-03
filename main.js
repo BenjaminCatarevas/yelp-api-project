@@ -2,9 +2,9 @@ var map;
 var geocoder;
 var markers = [];
 
-$(document).ready(function() {
+$(document).ready(function () {
     initializeGeocoder(); // Initializes Geocoder
-})
+});
 
 if (navigator.geolocation) { //add geolocation
     $("#form").submit(function (e) { //target the form
@@ -20,7 +20,7 @@ if (navigator.geolocation) { //add geolocation
             success: function (resp) {
                 $("#results").append('<div id="accordion"></div>');
                 // The above line adds a div container to hold the results in accordion form
-                if (resp.length === 0) { // Alerts user if no results are found
+                if (resp.length === 0) { // If no results
                     $("#results").append("<p>Number of results: 0 </p>");
                 } else {
                     $("#results").append("<p>Number of results: " + resp.length +  "</p>");
@@ -45,7 +45,6 @@ if (navigator.geolocation) { //add geolocation
             },
             error: function (err) {
                 console.error(err)
-                alert ("Error: Unspecified value")
             }
         })
 
@@ -55,7 +54,6 @@ if (navigator.geolocation) { //add geolocation
 
     // Else statement for non-geolocation browsers
 } else {
-    alert("Geolocation is not supported on this browser") // Inform user geolocation is not enabled/supported
 }
 
 /* Start of accordion functions */
