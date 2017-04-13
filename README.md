@@ -11,7 +11,7 @@ It also includes Google Maps to show where the stores are in relation to your cu
 ## Usage
 
 Visit: https://benjamincatarevas.github.io/yelp-api-project/ to use this app.
-Geolocation does not need to be enabled to use.
+Geolocation does not need to be enabled to use, but the browser does need geolocation built into it.
 
 ## Built With
 
